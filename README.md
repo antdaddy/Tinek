@@ -1,2 +1,2 @@
 # Tinek
-Test task for tinkoff internship 
+Test task for QA tinkoff internship 
