@@ -1,0 +1,56 @@
+package org.example;
+
+import java.util.Scanner;
+
+public class Task2 {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Введите количество элементов: ");
+        int n = scanner.nextInt();
+        
+        // Создаем массив для хранения введенных значений
+        int[] a = new int[n];
+        System.out.println("Введите элементы массива:");
+        for (int i = 0; i < n; i++) {
+            a[i] = scanner.nextInt();
+        }
+        
+        scanner.close();
+
+        // Создаем массив для результатов
+        int[] b = new int[n];
+        b[0] = (a[0] == -1) ? 1 : a[0];
+
+        // Заполняем массив b согласно условиям задачи
+        for (int i = 1; i < n; i++) {
+            if (a[i] == -1) {
+                b[i] = b[i - 1];
+            } else if (a[i] > b[i - 1]) {
+                b[i] = a[i];
+            } else {
+                System.out.println("NO");
+                return;
+            }
+        }
+
+        // Создаем массив c и проверяем условия
+        int[] c = new int[n];
+        c[0] = b[0];
+        
+        for (int i = 1; i < n; i++) {
+            c[i] = b[i] - b[i - 1];
+            if (c[i] <= 0) {
+                System.out.println("NO");
+                return;
+            }
+        }
+
+        // Если все проверки пройдены, выводим результат
+        System.out.println("YES");
+        System.out.print("Результирующий массив: ");
+        for (int value : c) {
+            System.out.print(value + " ");
+        }
+    }
+}
